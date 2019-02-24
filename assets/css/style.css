@@ -2507,4 +2507,28 @@ footer.site-footer {
     left: inherit !important;
     right: 20px !important; }
 
+    .box-detail {
+      width: 100%;
+      height: 200px;
+      border: 1px solid rgba(0,0,0,.125);
+      transition: 0.5s;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: 1px solid rgba(0,0,0,.125);
+    }
+
+    .box-detail:hover{
+      border: 1px solid #03a9f3;
+      cursor: pointer;
+      color: #03a9f3;
+    }
+
+
+    .box-detail .data{
+      display: inline;
+      font-size: 3.4em;
+      text-align: center;
+    }
+
 /*# sourceMappingURL=style.css.map */

@@ -42,7 +42,7 @@ class Barang extends Admin_Controller {
         if($validation->run()){
             $barang->Editdata();
             $this->session->set_flashdata('sukses', 'Data Berhasil Diubah');
-            redirect('barang', refresh);
+            redirect('barang', 'refresh');
         } else {
             $data['barang'] = $barang->getById($id);
             if(!$data['barang']) show_404();

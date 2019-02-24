@@ -24,6 +24,7 @@
                             <li><i class="menu-cion ti-stats-up"></i><a href="tables-data.html">Penjualan</a></li>
                         </ul>
                     </li>
+                    <?php if($user['level'] == 0): ?>
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon ti-layout-tab-window"></i>Kelola Website</a>
                         <ul class="sub-menu children dropdown-menu">
@@ -38,6 +39,7 @@
                             <li><i class="menu-icon ti-themify-logo"></i><a href="font-themify.html">Themefy Icons</a></li>
                         </ul>
                     </li>
+                    <?php endif; ?>
                     <li>
                         <a href="widgets.html"> <i class="menu-icon ti-info"></i>About</a>
 					</li>

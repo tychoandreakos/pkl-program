@@ -32,7 +32,11 @@ if(isset($pesan)):
 
         <tr>
         <td>Level</td>
-        <td><b><?= $user['level'] ?></b></td>
+        <td><b><?php if($user['level'] == 1){
+            echo 'Operator';
+        }else if($user['level']){
+            echo 'Admin';
+        } ?></b></td>
         </tr>
 
         <tr>

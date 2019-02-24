@@ -90,16 +90,6 @@ class Profile_model extends CI_Model {
         return $pecahkan[2] . ' ' . $bulan[ (int)$pecahkan[1] ] . ' ' . $pecahkan[0];
     }
 
-    private function level($level)
-    {
-        if($level == 0){
-            return 'Admin';
-        } else if($level == 1){
-            return 'Operator';
-        }
-
-        return false;
-    }
 
     public function addUser()
     {
@@ -109,7 +99,7 @@ class Profile_model extends CI_Model {
         $this->nama = $post['nama'];
         $this->username = $post['username'];
         $this->password = $this->hashPassword($post['password']);
-        $this->level = $this->level($post['level']);
+        $this->level = $post['level'];
         $this->status;
         $this->email = $post['email'];
         $this->tgl_join = $this->dateNow();

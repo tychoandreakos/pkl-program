@@ -58,4 +58,5 @@ class Pelanggan extends Admin_Controller {
             redirect('pelanggan', 'refresh');
         }
     }
+
 }

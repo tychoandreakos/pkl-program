@@ -104,12 +104,51 @@ jQuery(document).ready(function($) {
 			
 		} );
 	
+	//sweetalert
+	const hapus = $('.hapus');
+	hapus.on('click', function(e){
+	e.preventDefault();
+	let href = $(this).attr('href');
+	Swal.fire({
+		title: 'Are you sure?',
+		text: "Data akan dihapus!",
+		type: 'warning',
+		showCancelButton: true,
+		confirmButtonColor: '#3085d6',
+		cancelButtonColor: '#d33',
+		confirmButtonText: 'Ya, Hapus saja!'
+	  }).then((result) => {
+		if (result.value) {
+		 document.location.href = href;
+		}
+	  })
+	});
+
+	const fData = $('.flash-data').data('flashdata');
+	if(fData){
+		Swal.fire({
+		type: 'success',
+  		title: 'Data berhasil ' + fData,
+  		showConfirmButton: false,
+  		timer: 1500
+		  })
+	}
+
+	const fDataGagal = $('.flash-data-gagal').data('flashdata');
+	if(fDataGagal){
+		Swal.fire({
+		type: 'error',
+  		title: 'Data gagal ' + fDataGagal,
+  		showConfirmButton: false,
+  		timer: 1500
+		  })
+	}
+
+
 	
-	
+
 
 });
 
-
-//SWal
 
  
