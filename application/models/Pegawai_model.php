@@ -129,6 +129,11 @@ class Pegawai_model extends CI_Model {
         return $this->db->get_where('pasutri', ['id' => $id])->row();
     }
 
+    public function getByIdPendidikan($id)
+    {
+        return $this->db->get_where('pendidikan', ['id' => $id])->row();
+    }
+
     public function getById($id)
     {
         return $this->db->get_where($this->table, ['id' => $id])->row();

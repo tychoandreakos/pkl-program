@@ -58,3 +58,5 @@ $route['pegawai/data-ortu/(:any)'] = 'pegawai/dataortu/$1';
 $route['pegawai/data-ortu/update/(:any)'] = 'pegawai/OrtuUpdate/$1';
 $route['pegawai/data-pasutri/(:any)'] = 'pegawai/datapasutri/$1';
 $route['pegawai/data-pasutri/update/(:any)'] = 'pegawai/updatepasutri/$1';
+$route['pegawai/data-pendidikan/(:any)'] = 'pegawai/datapendidikan/$1';
+$route['pegawai/data-pendidikan/update/(:any)'] = 'pegawai/updatependidikan/$1';

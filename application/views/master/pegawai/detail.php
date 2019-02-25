@@ -185,3 +185,56 @@
     </div>
     
     <?php endif; ?>
+
+
+    
+
+
+
+    <?php if(isset($pendidikan)):
+    
+    ?>
+    
+    
+    <div class="card">
+        <div class="card-header">
+            <strong class="card-title">#Detail - Data Pendidikan
+           </strong>
+        </div>
+        <div class="card-body">
+    
+    <div class="container">
+        <div class="row">
+        <table class="table table-sm">
+        <tbody>
+    
+    
+        <tr>
+        <td>Tingkat Sekolah</td>
+        <td><?= ucwords($pendidikan->sekolah) ?></td>
+        </tr>
+    
+        <tr>
+        <td>Jurusan</td>
+        <td><?= ucwords($pendidikan->jurusan) ?></td>
+        </tr>
+    
+        <tr>
+        <td>Nama Sekolah</td>
+        <td><?= $pendidikan->sekolah ?></td>
+        </tr>
+    
+        <tr>
+        <td>Lokasi Sekolah</td>
+        <td><?= ucwords($pendidikan->lokasi) ?></td>
+        </tr>
+    
+        </tbody>
+        </table>
+        
+        </div>
+        </div>
+        </div>
+    </div>
+    
+    <?php endif; ?>

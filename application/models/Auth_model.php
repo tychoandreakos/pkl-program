@@ -51,7 +51,6 @@ Class Auth_model extends CI_Model {
             if($query->num_rows() == 1){
                 $result = $query->row_array();
                 
-                
 
                 // cek password
                 if(password_verify($password, $result['password'])){

@@ -38,7 +38,7 @@
 
 	<div class="row mt-1">
 	<div class="col-lg-4 mb-2">
-			<a href="<?= site_url('pegawai/data-pasutri/'. $id); ?>" class="box-detail">
+			<a href="<?= site_url('pegawai/data-pendidikan/'. $id); ?>" class="box-detail">
 				<div class="data">
 					<i class="ti-book"></i>
 					<p>Data Pendidikan</p>
