@@ -21,7 +21,7 @@ $bootstrapColWidth = 12 / $numOfCols;
   </head>
   <body>
 
-      <div class="topbar">
+      <!-- <div class="topbar">
         <div class="container">
         <div class="row">
           <div class="col p-2">
@@ -40,7 +40,7 @@ $bootstrapColWidth = 12 / $numOfCols;
          
         </div>
         </div>
-        </div>
+        </div> -->
 
         
     <!-- navbar -->

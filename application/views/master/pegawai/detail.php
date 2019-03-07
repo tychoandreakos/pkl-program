@@ -12,6 +12,10 @@
     <table class="table table-sm">
     <tbody>
 
+    <tr>
+    <td>ID Pegawai</td>
+    <td><?= $pegawai->id ?></td>
+    </tr>
 
     <tr>
     <td>Nama</td>
@@ -221,7 +225,7 @@
     
         <tr>
         <td>Nama Sekolah</td>
-        <td><?= $pendidikan->sekolah ?></td>
+        <td><b><?= $pendidikan->nama_sekolah ?></b></td>
         </tr>
     
         <tr>

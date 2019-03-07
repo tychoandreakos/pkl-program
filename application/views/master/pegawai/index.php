@@ -25,10 +25,10 @@ if(isset($gagal)):
 			<thead>
 				<tr>
 					<th>No</th>
+					<th>ID Pegawai</th>
 					<th>Nama Pegawai</th>
 					<th>Alamat</th>
                     <th>Jenis Kelamin</th>
-                    <th>No Telepon</th>
                     <th>Aksi</th>
 				</tr>
 			</thead>
@@ -37,10 +37,10 @@ if(isset($gagal)):
 			<?php foreach($employees as $employee): ?>
 				<tr>
 					<td><?= $i; ?></td>
+					<td><?= $employee->id  ?></td>
 					<td><?= ucwords($employee->nama) ?></td>
 					<td><?= ucwords($employee->alamat) ?></td>
                     <td><?= ucwords($this->pegawai->jenisKelamin($employee->jk)) ?></td>
-                    <td><?= $employee->no_telp ?></td>
                  
 					<td>
 					<a href="<?= site_url('pegawai/detail/') . $employee->id; ?>" class="btn btn-success btn-sm">Detail</a>

@@ -15,15 +15,7 @@
                             <li><i class="menu-icon ti-stats-up"></i><a href="<?= site_url('penjualan'); ?>">Penjualan</a></li>
                         </ul>
                     </li>
-                    <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon ti-printer"></i>Cetak Semua Data</a>
-                        <ul class="sub-menu children dropdown-menu">
-                            <li><i class="menu-icon ti-truck"></i><a href="tables-basic.html">Barang</a></li>
-                            <li><i class="menu-icon ti-user"></i><a href="tables-data.html">Pegawai</a></li>
-                            <li><i class="menu-icon ti-face-smile"></i><a href="tables-data.html">Pelanggan</a></li>
-                            <li><i class="menu-cion ti-stats-up"></i><a href="tables-data.html">Penjualan</a></li>
-                        </ul>
-                    </li>
+                    
                     <?php if($user['level'] == 0): ?>
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon ti-layout-tab-window"></i>Kelola Website</a>
@@ -40,9 +32,7 @@
                         </ul>
                     </li>
                     <?php endif; ?>
-                    <li>
-                        <a href="widgets.html"> <i class="menu-icon ti-info"></i>About</a>
-					</li>
+                  
 					<li>
                         <a href="widgets.html"> <i class="menu-icon ti-power-off"></i>Logout</a>
                     </li>

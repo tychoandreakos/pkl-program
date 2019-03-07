@@ -87,6 +87,11 @@ class Pegawai_model extends CI_Model {
         
     }
 
+    // nik :
+    // tgl_lahir, tgl_join, jk, no_urut
+
+   
+
     public function save()
     {
         $post = $this->input->post();
@@ -102,6 +107,7 @@ class Pegawai_model extends CI_Model {
         $this->email = $post['email'];
         $this->gol_darah = $post['gol_darah'];
         $this->agama = $post['agama'];
+        
       
         $this->db->insert($this->table, $this);
     }
@@ -132,6 +138,11 @@ class Pegawai_model extends CI_Model {
     public function getByIdPendidikan($id)
     {
         return $this->db->get_where('pendidikan', ['id' => $id])->row();
+    }
+
+    public function getByIdAnak($id)
+    {
+        return $this->db->get_where('anak', ['nik' => $id])->row();
     }
 
     public function getById($id)

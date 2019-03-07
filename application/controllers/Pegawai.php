@@ -6,16 +6,17 @@ class Pegawai extends Admin_Controller {
     {
         parent::__construct();
         $this->pegawai =& get_instance();
+        $this->not_logged_in();
         $this->load->model('pegawai_model');
         $this->load->model('ortu_model');
         $this->load->model('pendidikan_model');
         $this->load->model('pasutri_model');
+        $this->load->model('anak_model');
         $this->load->library('form_validation');
     }
 
     public function index()
     {
-
         $data['employees'] = $this->pegawai_model->getAll(); 
         $this->templates('master/pegawai/index', $data);
     }
@@ -176,6 +177,54 @@ class Pegawai extends Admin_Controller {
     }
     }
 
+    public function dataAnak($id)
+    {
+
+        if(empty($id)) show_404();
+
+        $pegawai = $this->anak_model;
+        $validation = $this->form_validation;
+        $validation->set_rules($pegawai->rules());
+
+        if($validation->run()){
+            // if($pegawai->cekData($id)){
+                $pegawai->save();
+                $this->session->set_flashdata('sukses', 'ditambah');
+                redirect('pegawai', 'refresh');
+            // } else {
+            // $this->session->set_flashdata('gagal', 'ditambah, id tidak ditemukan');
+            // redirect('pegawai', 'refresh');
+            // }
+            
+        } else {
+            $data['id'] = $id;
+            $this->templates('master/pegawai/datadiri/anak/index', $data);
+        }
+    
+
+    }
+
+    public function updateAnak($id)
+    {
+
+        $pegawai = $this->anak_model;
+        $validation = $this->form_validation;
+        $validation->set_rules($pegawai->rules());
+        
+        if($validation->run()){
+            $pegawai->update();
+            $this->session->set_flashdata('sukses', 'ditambah');
+                redirect('pegawai', 'refresh');
+        } else {
+            $data['anak'] = $pegawai->getData($id);
+        $this->templates('master/pegawai/datadiri/anak/update', $data);
+        }
+
+        
+
+    }
+
+
     public function dataPendidikan($id)
     {
         if(empty($id)) show_404();
@@ -236,6 +285,7 @@ class Pegawai extends Admin_Controller {
         $data['ortu'] = $pegawai->getByidOrtu($id);
         $data['pasutri'] = $pegawai->getByidStatus($id);
         $data['pendidikan'] = $pegawai->getByIdPendidikan($id);
+        $data['anak'] = $pegawai->getByIdAnak($id);
         if(!$data['pegawai']) show_404();
 
             
