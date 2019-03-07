@@ -4,7 +4,7 @@ class Pegawai_model extends CI_Model {
 
     protected $table = 'pegawai';
 
-    public $id;
+    public $nik;
     public $nama;
     public $alamat;
     public $tgl_lahir;
@@ -96,7 +96,7 @@ class Pegawai_model extends CI_Model {
     {
         $post = $this->input->post();
 
-        $this->id = uniqid();
+        $this->nik = uniqid();
         $this->nama = $post['nama'];
         $this->alamat = $post['alamat'];
         $this->tgl_lahir = $this->cekTgl($post['tgl_lahir']);
@@ -116,7 +116,14 @@ class Pegawai_model extends CI_Model {
     public function getAll()
     {
         
-        return $this->db->get($this->table)->result();
+        $this->db->select('*');
+$this->db->from('pegawai');
+$this->db->join('orangtua', 'orangtua.id = pegawai.id');
+$this->db->join('pasutri', 'pasutri.id = pegawai.id');
+$this->db->join('pendidikan', 'pendidikan.id = pegawai.id');
+$query = $this->db->get();
+return $query->result();
+
         
     }
 
@@ -125,31 +132,21 @@ class Pegawai_model extends CI_Model {
         return $this->db->count_all_results($this->table);
     }
 
-    public function getByIdOrtu($id)
-    {
-        return $this->db->get_where('orangtua', ['id' => $id])->row();
-    }
-
-    public function getByIdStatus($id)
-    {
-        return $this->db->get_where('pasutri', ['id' => $id])->row();
-    }
-
-    public function getByIdPendidikan($id)
-    {
-        return $this->db->get_where('pendidikan', ['id' => $id])->row();
-    }
-
-    public function getByIdAnak($id)
-    {
-        return $this->db->get_where('anak', ['nik' => $id])->row();
-    }
 
     public function getById($id)
     {
-        return $this->db->get_where($this->table, ['id' => $id])->row();
+        $this->db->select('*');
+        $this->db->from('pegawai');
+        $this->db->join('orangtua', 'orangtua.nik = pegawai.nik');
+        $this->db->join('pasutri', 'pasutri.nik = pegawai.nik');
+        $this->db->join('pendidikan', 'pendidikan.nik = pegawai.nik');
+        $this->db->Where('id', $id);
+        $query = $this->db->get();
+        return $query->row();
        
     }
+
+
 
     public function editData(){
         $post = $this->input->post();

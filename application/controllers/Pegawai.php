@@ -216,7 +216,7 @@ class Pegawai extends Admin_Controller {
             $this->session->set_flashdata('sukses', 'ditambah');
                 redirect('pegawai', 'refresh');
         } else {
-            $data['anak'] = $pegawai->getData($id);
+        $data['anak'] = $pegawai->getData($id);
         $this->templates('master/pegawai/datadiri/anak/update', $data);
         }
 
@@ -282,10 +282,10 @@ class Pegawai extends Admin_Controller {
 
         $pegawai = $this->pegawai_model;
         $data['pegawai'] = $pegawai->getById($id);
-        $data['ortu'] = $pegawai->getByidOrtu($id);
-        $data['pasutri'] = $pegawai->getByidStatus($id);
-        $data['pendidikan'] = $pegawai->getByIdPendidikan($id);
-        $data['anak'] = $pegawai->getByIdAnak($id);
+        // $data['ortu'] = $pegawai->getByidOrtu($id);
+        // $data['pasutri'] = $pegawai->getByidStatus($id);
+        // $data['pendidikan'] = $pegawai->getByIdPendidikan($id);
+        // $data['anak'] = $pegawai->getByIdAnak($id);
         if(!$data['pegawai']) show_404();
 
             

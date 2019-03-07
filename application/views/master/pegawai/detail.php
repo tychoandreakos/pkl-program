@@ -14,7 +14,7 @@
 
     <tr>
     <td>ID Pegawai</td>
-    <td><?= $pegawai->id ?></td>
+    <td><?= $pegawai->nik ?></td>
     </tr>
 
     <tr>
@@ -81,7 +81,7 @@
     </div>
 </div>
 
-<?php if(isset($ortu)):
+<?php if(isset($pegawai->nama_ayah)):
     
 ?>
 
@@ -101,32 +101,32 @@
 
     <tr>
     <td>Nama Ayah</td>
-    <td><?= ucwords($ortu->nama_ayah) ?></td>
+    <td><?= ucwords($pegawai->nama_ayah) ?></td>
     </tr>
 
     <tr>
     <td>Tempat, Tanggal Lahir Ayah</td>
-    <td><?= ucwords("$ortu->tmp_lahir_ayah, $ortu->tgl_lahir_ayah") ?></td>
+    <td><?= ucwords("$pegawai->tmp_lahir_ayah, $pegawai->tgl_lahir_ayah") ?></td>
     </tr>
 
     <tr>
     <td>Pendidikan Ayah</td>
-    <td><?= $ortu->pend_ayah ?></td>
+    <td><?= $pegawai->pend_ayah ?></td>
     </tr>
 
     <tr>
     <td>Nama Ibu</td>
-    <td><?= ucwords($ortu->nama_ibu) ?></td>
+    <td><?= ucwords($pegawai->nama_ibu) ?></td>
     </tr>
 
     <tr>
     <td>Tempat, Tanggal Lahir Ibu</td>
-    <td><?= ucwords("$ortu->tmp_lahir_ibu, $ortu->tgl_lahir_ibu") ?></td>
+    <td><?= ucwords("$pegawai->tmp_lahir_ibu, $pegawai->tgl_lahir_ibu") ?></td>
     </tr>
 
     <tr>
     <td>Pendidikan Ibu</td>
-    <td><?= $ortu->pend_ibu ?></td>
+    <td><?= $pegawai->pend_ibu ?></td>
     </tr>
 
     
@@ -142,14 +142,14 @@
 <?php endif; ?>
 
 
-<?php if(isset($pasutri)):
+<?php if(isset($pegawai->nama_pasutri)):
     
     ?>
     
     
     <div class="card">
         <div class="card-header">
-            <strong class="card-title">#Detail - Data <?= $this->pegawai->cekSuami($pasutri->status); ?>
+            <strong class="card-title">#Detail - Data <?= $this->pegawai->cekSuami($pegawai->status_pasutri); ?>
            </strong>
         </div>
         <div class="card-body">
@@ -161,23 +161,23 @@
     
     
         <tr>
-        <td>Nama <?= $this->pegawai->cekSuami($pasutri->status); ?></td>
-        <td><?= ucwords($pasutri->nama) ?></td>
+        <td>Nama <?= $this->pegawai->cekSuami($pegawai->status_pasutri); ?></td>
+        <td><?= ucwords($pegawai->nama_pasutri) ?></td>
         </tr>
     
         <tr>
         <td>Tempat, Tanggal Lahir </td>
-        <td><?= ucwords("$pasutri->tmp_lahir, $pasutri->tgl_lahir") ?></td>
+        <td><?= ucwords("$pegawai->tmp_lahir, $pegawai->tgl_lahir_pasutri") ?></td>
         </tr>
     
         <tr>
         <td>Pendidikan</td>
-        <td><?= $pasutri->pendidikan ?></td>
+        <td><?= $pegawai->pendidikan_pasutri ?></td>
         </tr>
     
         <tr>
         <td>Status</td>
-        <td><?= $this->pegawai->cekSuami($pasutri->status) ?></td>
+        <td><?= $this->pegawai->cekSuami($pegawai->status_pasutri) ?></td>
         </tr>
     
         </tbody>
@@ -195,7 +195,7 @@
 
 
 
-    <?php if(isset($pendidikan)):
+    <?php if(isset($pegawai->sekolah)):
     
     ?>
     
@@ -215,22 +215,22 @@
     
         <tr>
         <td>Tingkat Sekolah</td>
-        <td><?= ucwords($pendidikan->sekolah) ?></td>
+        <td><?= ucwords($pegawai->sekolah) ?></td>
         </tr>
     
         <tr>
         <td>Jurusan</td>
-        <td><?= ucwords($pendidikan->jurusan) ?></td>
+        <td><?= ucwords($pegawai->jurusan) ?></td>
         </tr>
     
         <tr>
         <td>Nama Sekolah</td>
-        <td><b><?= $pendidikan->nama_sekolah ?></b></td>
+        <td><b><?= $pegawai->nama_sekolah ?></b></td>
         </tr>
     
         <tr>
         <td>Lokasi Sekolah</td>
-        <td><?= ucwords($pendidikan->lokasi) ?></td>
+        <td><?= ucwords($pegawai->lokasi) ?></td>
         </tr>
     
         </tbody>
