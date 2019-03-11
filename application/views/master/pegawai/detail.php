@@ -301,3 +301,60 @@
     </div>
     
     <?php endif; ?>
+
+
+
+
+    <?php if(!empty($rp)):
+    
+    ?>
+    
+    
+    <div class="card">
+        <div class="card-header">
+            <strong class="card-title">#Detail - Data Riwayat Pekerjaan
+           </strong>
+        </div>
+        <div class="card-body">
+    
+    <div class="container">
+        <div class="row">
+        <table class="table table-sm">
+        <tbody>
+    
+        <?php foreach($rp as $riwayat) : ?>
+    
+        <tr>
+        <td>Nama Perusahaan</td>
+        <td><?= ucwords($riwayat->nama_perusahaan) ?></td>
+        </tr>
+    
+        <tr>
+        <td>Lokasi</td>
+        <td><?= ucwords($riwayat->lokasi_perusahaan) ?></td>
+        </tr>
+    
+        <tr>
+        <td>Jabatan</td>
+        <td><b><?= ucwords($riwayat->jabatan) ?></b></td>
+        </tr>
+    
+        <tr>
+        <td>Periode</td>
+        <td><?= ucwords($riwayat->periode) ?></td>
+        </tr>
+
+      <td colspan="2">
+        <br>
+      </td>
+    
+    <?php endforeach ?>
+        </tbody>
+        </table>
+        
+        </div>
+        </div>
+        </div>
+    </div>
+    
+    <?php endif; ?>

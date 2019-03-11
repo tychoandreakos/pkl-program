@@ -82,6 +82,8 @@ class Pegawai extends Admin_Controller {
         $nik = $this->pegawai_model->getDataPegawai($id)->nik;
         $data['pegawai'] = $pegawai->getById($id);
         $data['anak'] = $pegawai->anakByNik($nik);
+        $data['rp'] = $pegawai->rpByNik($nik);
+ 
         if(!$data['pegawai'] && !$data['anak']) show_404();
 
          $this->templates('master/pegawai/detail', $data);

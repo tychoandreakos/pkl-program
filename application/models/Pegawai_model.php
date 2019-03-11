@@ -141,6 +141,11 @@ class Pegawai_model extends CI_Model {
        return $this->db->get_where('anak', ['nik_pegawai' => $nik])->result_object();
     }
 
+    public function rpbyNik($nik)
+    {
+       return $this->db->get_where('pekerjaan', ['nik_pegawai' => $nik])->result_object();
+    }
+
     public function getDataPegawai($id){
         return $this->db->get_where($this->table, ['id' => $id])->row();
     }
