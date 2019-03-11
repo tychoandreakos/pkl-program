@@ -9,7 +9,6 @@ class Pegawai extends Admin_Controller {
         $this->not_logged_in();
         $this->load->model('pegawai_model');
         $this->load->model('ortu_model');
-        $this->load->model('pendidikan_model');
         $this->load->model('pasutri_model');
         $this->load->model('anak_model');
         $this->load->library('form_validation');
@@ -75,231 +74,19 @@ class Pegawai extends Admin_Controller {
         }
     }
 
-    public function OrtuUpdate($id = null)
-    {
-        if(empty($id)) show_404();
-
-    $pegawai = $this->ortu_model;
-    $validation = $this->form_validation;
-    $validation->set_rules($pegawai->rules());
-
-    if($validation->run()){
-        $pegawai->update();
-        $this->session->set_flashdata('sukses', 'diupdate');
-        redirect('pegawai', 'refresh');
-    }
-    }
-
-
-    public function dataortu($id = null)
-    {
-    if(empty($id)) show_404();
-
-    $pegawai = $this->ortu_model;
-    $validation = $this->form_validation;
-    $validation->set_rules($pegawai->rules());
-
-    if($pegawai->cekData($id)){
-
-    $data['id'] = $id;
-    $data['data'] = $pegawai->getData($id);
-    $this->templates('master/pegawai/datadiri/orangtua/update', $data);
-
-    } else {
-       
-        if($validation->run()){
-            if($pegawai->save()){          
-            $this->session->set_flashdata('sukses', 'diupdate');
-            redirect('pegawai', 'refresh');
-        } else {
-            $this->session->set_flashdata('gagal', 'diupdate, id tidak ditemukan');
-            redirect('pegawai', 'refresh');
-            }
-        } else {
-    
-    $data['id'] = $id;      
-    $this->templates('master/pegawai/datadiri/orangtua/orangtua', $data);
-        
-}
-
-    }
-
-          
-    }
-
-    public function datapasutri($id){
-        if(is_null($id)) show_404();
-
-        $pegawai = $this->pasutri_model;
-        $validation = $this->form_validation;
-        $validation->set_rules($pegawai->rules());
-
-        if($pegawai->cekDB($id)){
-            $data['data'] = $pegawai->getData($id);
-            $this->templates('master/pegawai/datadiri/pasutri/update', $data);
-        } else {
-
-            if($validation->run()){
-                if($pegawai->cekData($id)){
-                    $pegawai->save();
-                    $this->session->set_flashdata('sukses', 'ditambah');
-                    redirect('pegawai', 'refresh');
-                } else {
-                $this->session->set_flashdata('gagal', 'ditambah, id tidak ditemukan');
-                redirect('pegawai', 'refresh');
-                }
-            } else {
-    
-                $data['id'] = $id;      
-                $this->templates('master/pegawai/datadiri/pasutri/index', $data);
-            }
-        }
-        
-    }
-
-    public function updatePasutri($id)
-    {
-        if(empty($id)) show_404();
-
-    $pegawai = $this->pasutri_model;
-    $validation = $this->form_validation;
-    $validation->set_rules($pegawai->rules());
-
-    if($validation->run()){
-        if($pegawai->update()){
-            $this->session->set_flashdata('sukses', 'diupdate');
-        redirect('pegawai', 'refresh');
-        } else {
-            $this->session->set_flashdata('gagal', 'diupdate');
-            redirect('pegawai', 'refresh');    
-        }
-        
-    }
-    }
-
-    public function dataAnak($id)
-    {
-
-        if(empty($id)) show_404();
-
-        $pegawai = $this->anak_model;
-        $validation = $this->form_validation;
-        $validation->set_rules($pegawai->rules());
-
-        if($validation->run()){
-            // if($pegawai->cekData($id)){
-                $pegawai->save();
-                $this->session->set_flashdata('sukses', 'ditambah');
-                redirect('pegawai', 'refresh');
-            // } else {
-            // $this->session->set_flashdata('gagal', 'ditambah, id tidak ditemukan');
-            // redirect('pegawai', 'refresh');
-            // }
-            
-        } else {
-            $data['id'] = $id;
-            $this->templates('master/pegawai/datadiri/anak/index', $data);
-        }
-    
-
-    }
-
-    public function updateAnak($id)
-    {
-
-        $pegawai = $this->anak_model;
-        $validation = $this->form_validation;
-        $validation->set_rules($pegawai->rules());
-        
-        if($validation->run()){
-            $pegawai->update();
-            $this->session->set_flashdata('sukses', 'ditambah');
-                redirect('pegawai', 'refresh');
-        } else {
-        $data['anak'] = $pegawai->getData($id);
-        $this->templates('master/pegawai/datadiri/anak/update', $data);
-        }
-
-        
-
-    }
-
-
-    public function dataPendidikan($id)
-    {
-        if(empty($id)) show_404();
-
-        $pegawai = $this->pendidikan_model;
-        $validation = $this->form_validation;
-        $validation->set_rules($pegawai->rules());
-
-        if($pegawai->cekDB($id)){
-            $data['data'] = $pegawai->getData($id);
-            $this->templates('master/pegawai/datadiri/pendidikan/update', $data);
-        } else {
-
-        if($validation->run()){
-            if($pegawai->cekData($id)){
-                $pegawai->save();
-                $this->session->set_flashdata('sukses', 'ditambah');
-                redirect('pegawai', 'refresh');
-            } else {
-            $this->session->set_flashdata('gagal', 'ditambah, id tidak ditemukan');
-            redirect('pegawai', 'refresh');
-            }
-            
-        } else {
-            $data['id'] = $id;
-            $this->templates('master/pegawai/datadiri/pendidikan/index', $data);
-        }
-    }
-        
-    }
-
-    public function updatePendidikan($id)
-    {
-        if(empty($id)) show_404();
-
-        $pegawai = $this->pendidikan_model;
-        $validation = $this->form_validation;
-        $validation->set_rules($pegawai->rules());
-    
-        if($validation->run()){
-            if($pegawai->update()){
-                $this->session->set_flashdata('sukses', 'diupdate');
-            redirect('pegawai', 'refresh');
-            } else {
-                $this->session->set_flashdata('gagal', 'diupdate');
-                redirect('pegawai', 'refresh');    
-            }
-            
-        }
-    }
-
     public function detail($id)
     {
         if(is_null($id)) show_404();
 
         $pegawai = $this->pegawai_model;
+        $nik = $this->pegawai_model->getDataPegawai($id)->nik;
         $data['pegawai'] = $pegawai->getById($id);
-        // $data['ortu'] = $pegawai->getByidOrtu($id);
-        // $data['pasutri'] = $pegawai->getByidStatus($id);
-        // $data['pendidikan'] = $pegawai->getByIdPendidikan($id);
-        // $data['anak'] = $pegawai->getByIdAnak($id);
-        if(!$data['pegawai']) show_404();
+        $data['anak'] = $pegawai->anakByNik($nik);
+        if(!$data['pegawai'] && !$data['anak']) show_404();
 
-            
-            $this->templates('master/pegawai/detail', $data);
+         $this->templates('master/pegawai/detail', $data);
     }
 
-    public function cekDataOrtu($data = null)
-    {
-        if($data == null){
-            return $data;
-        } else {
-            return 'Data Belum Lengkap, Mohon Dilengkap';
-        }
-    }
 
     public function lengkapidata($id)
     {

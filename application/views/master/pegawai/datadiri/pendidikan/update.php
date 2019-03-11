@@ -1,10 +1,10 @@
 <div class="card">
 	<div class="card-header">
-		<strong class="card-title">#Data Pendidikan <a href="<?= site_url('pegawai/data-pegawai/' . $data->id); ?>" class="btn btn-outline-primary  btn-sm float-right">Kembali</a></strong>
+		<strong class="card-title">#Data Pendidikan <a href="<?= site_url('pegawai/data-pegawai/' . $data->id_pendidikan); ?>" class="btn btn-outline-primary  btn-sm float-right">Kembali</a></strong>
 	</div>
 	<div class="card-body">
 
-		<form action="<?=  base_url('pegawai/data-pendidikan/update/' . $data->id); ?>" method="post">
+		<form action="<?=  base_url('pegawai/data-pendidikan/update/' . $data->id_pendidikan); ?>" method="post">
 			<div class="text-danger">
 				<?php echo form_error('sekolah') ?>
 			</div>
@@ -21,7 +21,8 @@
 				<?php echo form_error('thn_lulus') ?>
 			</div>
 
-			<input type="hidden" name="id" value="<?= $data->id ?>">
+			<input type="hidden" name="id" value="<?= $data->id_pendidikan ?>">
+			<input type="hidden" name="nik" value="<?= $data->nik_pegawai ?>">
 
 			<div class="form-group">
 				<label class="form-control-label" for="sekolah">Tingkat Sekolah</label><input type="text" id="sekolah" class="form-control"

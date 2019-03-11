@@ -15,6 +15,7 @@
         <div class="text-danger"><?php echo form_error('pendidikanibu') ?></div>
         
 			<input type="hidden" name="id" value="<?= $id ?>">
+			<input type="hidden" name="nik" value="<?= $nik ?>">
 
 			<div class="form-group">
 				<label class="form-control-label" for="namaayah">Nama Ayah</label><input type="text" id="namaayah" class="form-control"

@@ -13,6 +13,7 @@
         <div class="text-danger"><?php echo form_error('status') ?></div>
         
 			<input type="hidden" name="id" value="<?= $id ?>">
+			<input type="hidden" name="nik" value="<?= $nik ?>">
 
 			<div class="form-group">
 				<label class="form-control-label" for="namaanak">Nama Anak</label><input type="text" id="namaanak" class="form-control"

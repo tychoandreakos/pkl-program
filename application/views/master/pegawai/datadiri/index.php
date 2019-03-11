@@ -26,7 +26,7 @@
 		</div>
 
 		<div class="col-lg-4 mb-2">
-			<a href="<?= site_url('pegawai/data-anak/update/'. $id); ?>" class="box-detail">
+			<a href="<?= site_url('pegawai/data-anak/'. $id); ?>" class="box-detail">
 				<div class="data">
 					<i class="ti-user"></i>
 					<p>Data Anak</p>

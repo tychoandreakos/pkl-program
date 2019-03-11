@@ -1,18 +1,5 @@
 <?php
 
-	// $nama3 = 'denis, asep, yoga';
-	// $nama2 = explode(',', $nama3);
-	// $nama = serialize($nama2);
-	// var_dump($nama);
-
-	// $un = unserialize($nama);
-	// var_dump($un);
-	// $no = 1;
-	// for($i=0;$i < count($un); $i++){
-	// 	echo "nama lengkap anak ke  " . $no . "  : ". $un[$i] ."<br>";
-	// 	$no++;
-	// }
-	// die;
 	
 ?>
 

@@ -5,7 +5,7 @@ class Anak_model extends CI_Model {
 
     protected $table = 'anak';
 
-    public $nik;
+    public $nik_pegawai;
     public $nama_anak;
     public $tgl_lahiranak;
     public $tmp_lahiranak;
@@ -35,17 +35,49 @@ class Anak_model extends CI_Model {
         ];
     }
 
+    public function cekData($id)
+    {
+       $hasil = $this->db->get_where('pegawai', ['id' => $id])->num_rows();
+       if($hasil == 1){
+           return true;
+       } else {
+           return false;
+       }
+    }
+
+    public function getData($nik)
+    {
+        return $this->db->get_where($this->table, ['nik_pegawai' => $nik])->result_object();
+ }
+
+    
+    public function cekNik($nik)
+    {
+        $hasil = $this->db->get_where($this->table, ['nik_pegawai' => $nik])->num_rows();
+        if($hasil > 1){
+           return true;
+       } else {
+           return false;
+       }
+    }
+
+    public function getDataPegawai($id)
+    {
+        return $this->db->get_where('pegawai', ['id' => $id])->row();
+    }
+
     public function save()
     {
         $post = $this->input->post();
 
-        $this->nik= $post['id'];
-        $this->nama_anak = serialize($post['nama_anak']);
-        $this->tgl_lahiranak = serialize($post['tgl_lahiranak']);
-        $this->tmp_lahiranak = serialize($post['tmp_lahiranak']);
-        $this->pendidikananak = serialize($post['pendidikananak']);
-        $this->jk = serialize($post['jk']);
-        $this->status = serialize($post['statusanak']);
+
+        $this->nik_pegawai= $post['nik'];
+        $this->nama_anak = $post['nama_anak'];
+        $this->tgl_lahiranak = $post['tgl_lahiranak'];
+        $this->tmp_lahiranak = $post['tmp_lahiranak'];
+        $this->pendidikananak = $post['pendidikananak'];
+        $this->jk = $post['jk'];
+        $this->status = $post['statusanak'];
 
         $this->db->insert($this->table, $this);
     }
@@ -66,19 +98,9 @@ class Anak_model extends CI_Model {
         $this->db->update($this->table, $this, ['id' => $this->id]);
     }
 
-    public function getData($id)
+    public function getDetailAnakById($id)
     {
-      return $this->db->get_where($this->table, ['nik' => $id])->row();
-    }
-
-    public function cekData($id)
-    {
-        $hasil = $this->db->get_where($this->table, ['id' => $id])->num_rows();
-        if($hasil == 1){
-            return true;
-        } else {
-            return false;
-        }
+    return $this->db->get_where($this->table, ['id_anak' => $id])->row();
     }
 
 }

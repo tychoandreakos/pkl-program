@@ -115,16 +115,7 @@ class Pegawai_model extends CI_Model {
 
     public function getAll()
     {
-        
-        $this->db->select('*');
-$this->db->from('pegawai');
-$this->db->join('orangtua', 'orangtua.id = pegawai.id');
-$this->db->join('pasutri', 'pasutri.id = pegawai.id');
-$this->db->join('pendidikan', 'pendidikan.id = pegawai.id');
-$query = $this->db->get();
-return $query->result();
-
-        
+    return $this->db->get($this->table)->result();
     }
 
     public function count()
@@ -137,21 +128,29 @@ return $query->result();
     {
         $this->db->select('*');
         $this->db->from('pegawai');
-        $this->db->join('orangtua', 'orangtua.nik = pegawai.nik');
-        $this->db->join('pasutri', 'pasutri.nik = pegawai.nik');
-        $this->db->join('pendidikan', 'pendidikan.nik = pegawai.nik');
+        $this->db->join('orangtua', 'orangtua.nik_pegawai = pegawai.nik', 'left');
+        $this->db->join('pasutri', 'pasutri.nik_pegawai = pegawai.nik', 'left');
+        $this->db->join('pendidikan', 'pendidikan.nik_pegawai = pegawai.nik', 'left');
         $this->db->Where('id', $id);
         $query = $this->db->get();
         return $query->row();
-       
     }
 
+    public function anakbyNik($nik)
+    {
+       return $this->db->get_where('anak', ['nik_pegawai' => $nik])->result_object();
+    }
+
+    public function getDataPegawai($id){
+        return $this->db->get_where($this->table, ['id' => $id])->row();
+    }
 
 
     public function editData(){
         $post = $this->input->post();
 
-        $this->id = $post['id'];
+        $id = $post['id'];
+        $this->nik = $post['nik'];
         $this->nama = $post['nama'];
         $this->alamat = $post['alamat'];
         $this->tgl_lahir = $this->cekTgl($post['tgl_lahir']);
@@ -164,7 +163,7 @@ return $query->result();
         $this->agama = $post['agama'];
 
         if($this->tgl_lahir = $this->cekTgl($post['tgl_lahir'])){
-            $this->db->update($this->table, $this, ['id' => $this->id]);
+            $this->db->update($this->table, $this, ['id' => $id]);
             return true;
         } else {
             return false;

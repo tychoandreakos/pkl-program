@@ -25,31 +25,30 @@ if(isset($gagal)):
 			<thead>
 				<tr>
 					<th>No</th>
-					<th>ID Pegawai</th>
-					<th>Nama Pegawai</th>
-					<th>Alamat</th>
-                    <th>Jenis Kelamin</th>
+					<th>Nama Anak</th>
+					<th>Tempat, Tanggal Lahir</th>
+                    <th>Status</th>
                     <th>Aksi</th>
 				</tr>
 			</thead>
 			<tbody>
-		<?php  $i = 1?>
-			<?php foreach($employees as $employee): ?>
+			<?php $i=1 ?>
+			<?php foreach($data as $d): ?>
 				<tr>
 					<td><?= $i; ?></td>
-					<td><?= $employee->nik?></td>
-					<td><?= ucwords($employee->nama) ?></td>
-					<td><?= ucwords($employee->alamat) ?></td>
-                    <td><?= ucwords($this->pegawai->jenisKelamin($employee->jk)) ?></td>
+					<td><?= ucwords($d->nama_anak) ?></td>
+					<td><?= ucwords("$d->tmp_lahiranak , $d->tgl_lahiranak") ?></td>
+                    <td><?= ucwords($d->status) ?></td>
                  
 					<td>
-					<a href="<?= site_url('pegawai/detail/') . $employee->id; ?>" class="btn btn-success btn-sm">Detail</a>
-					<a href="<?= site_url('pegawai/edit/' . $employee->id); ?>" class="btn btn-primary btn-sm">Edit</a>
-					<a href="<?= site_url('pegawai/hapus/' . $employee->id); ?>" class="hapus btn btn-danger btn-sm">Hapus</a>
+					<a href="<?= site_url('pegawai/data-anak/detail/') . $d->id_anak; ?>" class="btn btn-success btn-sm">Detail</a>
+					<a href="<?= site_url('pegawai/edit/' . $d->id_anak); ?>" class="btn btn-primary btn-sm">Edit</a>
+					<a href="<?= site_url('pegawai/hapus/' . $d->id_anak); ?>" class="hapus btn btn-danger btn-sm">Hapus</a>
 					</td>
 				</tr>
-				
-		<?php $i++;endforeach; ?>
+
+			<?php $i++ ?>	
+		<?php endforeach; ?>
 
 			</tbody>
 

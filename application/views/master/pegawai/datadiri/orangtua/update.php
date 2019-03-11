@@ -1,10 +1,10 @@
 <div class="card">
 	<div class="card-header">
-		<strong class="card-title">#Data Diri Orang Tua Karyawan <a href="<?= site_url('pegawai/data-pegawai/' . $id); ?>" class="btn btn-outline-primary  btn-sm float-right">Kembali</a></strong>
+		<strong class="card-title">#Data Diri Orang Tua Karyawan <a href="<?= site_url('pegawai/data-pegawai/' . $data->id_orgtua); ?>" class="btn btn-outline-primary  btn-sm float-right">Kembali</a></strong>
 	</div>
 	<div class="card-body">
 
-		<form action="<?=  base_url('pegawai/data-ortu/update/' . $id); ?>" method="post">
+		<form action="<?=  base_url('pegawai/data-ortu/update/' . $data->id_orgtua); ?>" method="post">
         <div class="text-danger"><?php echo form_error('namaayah') ?></div>
         <div class="text-danger"><?php echo form_error('tgl_lahirayah') ?></div>
         <div class="text-danger"><?php echo form_error('tmp_lahirayah') ?></div>
@@ -14,7 +14,8 @@
         <div class="text-danger"><?php echo form_error('tmp_lahiribu') ?></div>
         <div class="text-danger"><?php echo form_error('pendidikanibu') ?></div>
         
-			<input type="hidden" name="id" value="<?= $id ?>">
+			<input type="hidden" name="id_orgtua" value="<?= $data->id_orgtua ?>">
+			<input type="hidden" name="nik" value="<?= $data->nik_pegawai ?>">
 
 			<div class="form-group">
 				<label class="form-control-label" for="namaayah">Nama Ayah</label><input type="text" id="namaayah" class="form-control"

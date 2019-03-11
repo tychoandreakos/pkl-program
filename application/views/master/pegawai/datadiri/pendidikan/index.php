@@ -19,6 +19,7 @@
 			</div>
 
 			<input type="hidden" name="id" value="<?= $id ?>">
+			<input type="hidden" name="nik" value="<?= $nik ?>">
 
 			<div class="form-group">
 				<label class="form-control-label" for="sekolah">Tingkat Sekolah</label><input type="text" id="sekolah" class="form-control"

@@ -2,12 +2,15 @@
 
 class Pasutri_model extends CI_Model 
 {
-    protected $table = 'pasutri';   
-    public $nama;
-    public $tgl_lahir;
-    public $tmp_lahir;
-    public $pendidikan;
-    public $status;
+    protected $table = 'pasutri';
+    
+    public $id_pasutri;
+    public $nik_pegawai;
+    public $nama_pasutri;
+    public $tgl_lahir_pasutri;
+    public $tmp_lahir_pasutri;
+    public $pendidikan_pasutri;
+    public $status_pasutri;
 
     public function rules()
     {
@@ -32,12 +35,17 @@ class Pasutri_model extends CI_Model
 
     public function getData($id)
     {
-        return $this->db->get_where($this->table, ['id' => $id])->row();
+        return $this->db->get_where($this->table, ['id_pasutri' => $id])->row();
+    }
+
+    public function getDataPegawai($id)
+    {
+        return $this->db->get_where('pegawai', ['id' => $id])->row();
     }
 
     public function cekDb($id)
     {
-        $hasil = $this->db->get_where($this->table, ['id' => $id])->num_rows();
+        $hasil = $this->db->get_where($this->table, ['id_pasutri' => $id])->num_rows();
        if($hasil == 1){
            return true;
        } else {
@@ -59,12 +67,13 @@ class Pasutri_model extends CI_Model
     {
         $post = $this->input->post();
 
-        $this->id = $post['id'];
-        $this->nama = $post['nama'];
-        $this->tgl_lahir = $post['tgl_lahir'];
-        $this->tmp_lahir = $post['tmp_lahir'];
-        $this->pendidikan = $post['pendidikan'];
-        $this->status = $post['status'];
+        $this->id_pasutri = $post['id'];
+        $this->nik_pegawai = $post['nik'];
+        $this->nama_pasutri = $post['nama'];
+        $this->tgl_lahir_pasutri = $post['tgl_lahir'];
+        $this->tmp_lahir_pasutri = $post['tmp_lahir'];
+        $this->pendidikan_pasutri = $post['pendidikan'];
+        $this->status_pasutri = $post['status'];
 
         $this->db->insert($this->table, $this);
     }
@@ -73,15 +82,16 @@ class Pasutri_model extends CI_Model
     {
         $post = $this->input->post();
 
-        $this->id = $post['id'];
-        $this->nama = $post['nama'];
-        $this->tgl_lahir = $post['tgl_lahir'];
-        $this->tmp_lahir = $post['tmp_lahir'];
-        $this->pendidikan = $post['pendidikan'];
-        $this->status = $post['status'];
+        $this->id_pasutri = $post['id'];
+        $this->nik_pegawai = $post['nik'];
+        $this->nama_pasutri = $post['nama'];
+        $this->tgl_lahir_pasutri = $post['tgl_lahir'];
+        $this->tmp_lahir_pasutri = $post['tmp_lahir'];
+        $this->pendidikan_pasutri = $post['pendidikan'];
+        $this->status_pasutri = $post['status'];
 
-        if($this->cekData($this->id)){
-            $this->db->update($this->table, $this, ['id' => $this->id]);
+        if($this->cekData($this->id_pasutri)){
+            $this->db->update($this->table, $this, ['id_pasutri' => $this->id_pasutri]);
             return true;
         } else {
             return false;

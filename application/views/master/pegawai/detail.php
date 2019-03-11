@@ -242,3 +242,63 @@
     </div>
     
     <?php endif; ?>
+
+
+    <?php if(isset($anak)):
+    
+    ?>
+    
+    
+    <div class="card">
+        <div class="card-header">
+            <strong class="card-title">#Detail - Data Anak
+           </strong>
+        </div>
+        <div class="card-body">
+    
+    <div class="container">
+        <div class="row">
+        <table class="table table-sm">
+        <tbody>
+    
+        <?php foreach($anak as $a) : ?>
+    
+        <tr>
+        <td>Nama Anak</td>
+        <td><?= ucwords($a->nama_anak) ?></td>
+        </tr>
+    
+        <tr>
+        <td>Tempat, Tanggal Lahir</td>
+        <td><?= ucwords("$a->tmp_lahiranak, $a->tgl_lahiranak") ?></td>
+        </tr>
+    
+        <tr>
+        <td>Pendidikan</td>
+        <td><b><?= $a->pendidikananak ?></b></td>
+        </tr>
+    
+        <tr>
+        <td>Jenis Kelamin</td>
+        <td><?= ucwords($a->jk) ?></td>
+        </tr>
+
+        <tr>
+        <td>Status</td>
+        <td><?= ucwords($a->status) ?></td>
+        </tr>
+
+      <td colspan="2">
+        <br>
+      </td>
+    
+    <?php endforeach ?>
+        </tbody>
+        </table>
+        
+        </div>
+        </div>
+        </div>
+    </div>
+    
+    <?php endif; ?>

@@ -11,6 +11,7 @@
         <div class="text-danger"><?php echo form_error('pendidikan') ?></div>
         
 			<input type="hidden" name="id" value="<?= $id ?>">
+			<input type="hidden" name="nik" value="<?= $nik ?>">
 
 			<div class="form-group">
 				<label class="form-control-label" for="nama">Nama Suami / Istri</label><input type="text" id="nama" class="form-control"

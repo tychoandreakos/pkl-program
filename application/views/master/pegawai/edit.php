@@ -18,7 +18,8 @@
         <div class="text-danger"><?php echo form_error('email') ?></div>
 		<div class="text-danger"><?php echo form_error('agama') ?></div>
         
-        <input type="hidden" name="id" value="<?= $pegawai->id ?>">
+        <input type="hidden" name="nik" value="<?= $pegawai->nik ?>">
+		<input type="hidden" name="id" value="<?= $pegawai->id ?>">
 
 			<div class="form-group">
 				<label class="form-control-label" for="nama">Nama Lengkap</label><input type="text" id="nama" class="form-control"

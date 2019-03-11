@@ -4,7 +4,8 @@ class Pendidikan_model extends CI_Model {
     
     protected $table = 'pendidikan';
 
-    public $id;
+    public $id_pendidikan;
+    public $nik_pegawai;
     public $sekolah;
     public $jurusan;
     public $nama_sekolah;
@@ -40,12 +41,17 @@ class Pendidikan_model extends CI_Model {
 
     public function getData($id)
     {
-        return $this->db->get_where($this->table, ['id' => $id])->row();
+        return $this->db->get_where($this->table, ['id_pendidikan' => $id])->row();
+    }
+
+    public function getDataPegawai($id)
+    {
+        return $this->db->get_where('pegawai', ['id' => $id])->row();
     }
 
     public function cekDB($id)
     {
-        $hasil = $this->db->get_where($this->table, ['id' => $id])->num_rows();
+        $hasil = $this->db->get_where($this->table, ['id_pendidikan' => $id])->num_rows();
         if($hasil > 0){
             return true;
         } else {
@@ -67,7 +73,8 @@ class Pendidikan_model extends CI_Model {
     {
         $post = $this->input->post();
 
-        $this->id = $post['id'];
+        $this->id_pendidikan = $post['id'];
+        $this->nik_pegawai = $post['nik'];
         $this->sekolah = $post['sekolah'];
         $this->jurusan = $post['jurusan'];
         $this->nama_sekolah = $post['nama_sekolah'];
@@ -82,15 +89,16 @@ class Pendidikan_model extends CI_Model {
     {
         $post = $this->input->post();
 
-        $this->id = $post['id'];
+        $this->id_pendidikan = $post['id'];
+        $this->nik_pegawai = $post['nik'];
         $this->sekolah = $post['sekolah'];
         $this->jurusan = $post['jurusan'];
         $this->nama_sekolah = $post['nama_sekolah'];
         $this->lokasi = $post['lokasi'];
         $this->thn_lulus = $post['thn_lulus'];
 
-        if($this->cekDB($this->id)){
-            $this->db->update($this->table, $this, ['id' => $this->id]);
+        if($this->cekDB($this->id_pendidikan)){
+            $this->db->update($this->table, $this, ['id_pendidikan' => $this->id_pendidikan]);
         return true;  
         } else {
             return false;
