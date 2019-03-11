@@ -61,9 +61,25 @@ class Anak_model extends CI_Model {
        }
     }
 
+    public function cekIdAnak($id)
+    {
+        $hasil = $this->db->get_where($this->table, ['id_anak' => $id])->num_rows();
+        if($hasil == 1){
+           return true;
+       } else {
+           return false;
+       }
+    }
+
+
     public function getDataPegawai($id)
     {
-        return $this->db->get_where('pegawai', ['id' => $id])->row();
+        $validasi = $this->db->get_where('pegawai', ['id' => $id])->num_rows();
+        if($validasi > 0){
+            return $this->db->get_where('pegawai', ['id' => $id])->row();
+        } else {
+            return false;
+        }
     }
 
     public function save()
@@ -86,8 +102,8 @@ class Anak_model extends CI_Model {
     {
         $post = $this->input->post();
 
-        $this->id = $post['id'];
-        $this->nik= $post['nik'];
+        $id = $post['id'];
+        $this->nik_pegawai = $post['nik'];
         $this->nama_anak = $post['nama_anak'];
         $this->tgl_lahiranak =  $post['tgl_lahiranak'];
         $this->tmp_lahiranak =  $post['tmp_lahiranak'];
@@ -95,7 +111,9 @@ class Anak_model extends CI_Model {
         $this->jk = $post['jk'];
         $this->status =  $post['statusanak'];
 
-        $this->db->update($this->table, $this, ['id' => $this->id]);
+       
+            $this->db->update($this->table, $this, ['id_anak' => $id]);
+        
     }
 
     public function getDetailAnakById($id)

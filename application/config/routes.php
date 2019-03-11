@@ -62,6 +62,7 @@ $route['pegawai/data-pendidikan/(:any)'] = 'pendidikan/store/$1';
 $route['pegawai/data-pendidikan/update/(:any)'] = 'pendidikan/update/$1';
 $route['pegawai/data-anak/(:any)'] = 'anak/store/$1';
 $route['pegawai/data-anak/update/(:any)'] = 'anak/update/$1';
+$route['pegawai/data-anak/edit/(:any)'] = 'anak/edit/$1';
 $route['pegawai/data-anak/detail/(:any)'] = 'anak/detail/$1';
 $route['pegawai/data-pekerjaan/(:any)'] = 'pegawai/datapekerjaan/$1';
 $route['pegawai/data-pekerjaan/update/(:any)'] = 'pegawai/updatepekerjaan/$1';

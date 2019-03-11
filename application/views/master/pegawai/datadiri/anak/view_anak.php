@@ -42,7 +42,7 @@ if(isset($gagal)):
                  
 					<td>
 					<a href="<?= site_url('pegawai/data-anak/detail/') . $d->id_anak; ?>" class="btn btn-success btn-sm">Detail</a>
-					<a href="<?= site_url('pegawai/edit/' . $d->id_anak); ?>" class="btn btn-primary btn-sm">Edit</a>
+					<a href="<?= site_url('pegawai/data-anak/edit/' . $d->id_anak); ?>" class="btn btn-primary btn-sm">Edit</a>
 					<a href="<?= site_url('pegawai/hapus/' . $d->id_anak); ?>" class="hapus btn btn-danger btn-sm">Hapus</a>
 					</td>
 				</tr>

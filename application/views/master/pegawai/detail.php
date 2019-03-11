@@ -243,8 +243,7 @@
     
     <?php endif; ?>
 
-
-    <?php if(isset($anak)):
+    <?php if(!empty($anak)):
     
     ?>
     

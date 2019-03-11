@@ -15,34 +15,59 @@ class Anak extends Admin_Controller
     {
          if(empty($id)) show_404();
 
-         $anak = $this->anak_model;
-         $validation = $this->form_validation;
-         $validation->set_rules($anak->rules());
-         $nik = $this->anak_model->getDataPegawai($id)->nik;
+         if($this->anak_model->getDataPegawai($id)) {
 
-         if($anak->cekNik($nik)){
-            $data['data'] = $anak->getData($nik);
-            $this->templates('master/pegawai/datadiri/anak/view_anak', $data);
-        } else {
+            $anak = $this->anak_model;
+            $validation = $this->form_validation;
+            $validation->set_rules($anak->rules());
+            $nik = $this->anak_model->getDataPegawai($id)->nik;
+   
+            if($anak->cekNik($nik)){
+               $data['data'] = $anak->getData($nik);
+               $this->templates('master/pegawai/datadiri/anak/view_anak', $data);
+           } else {
+   
+            if($validation->run()){
+                if($anak->cekData($id)){
+                    $anak->save();
+                    $this->session->set_flashdata('sukses', 'ditambah');
+                    redirect('pegawai', 'refresh');
+                } else {
+                $this->session->set_flashdata('gagal', 'ditambah, id tidak ditemukan');
+                redirect('pegawai', 'refresh');
+                }
+                
+            } else {
+   
+                   $data['id'] = $id;
+                   $data['nik'] = $nik;
+                   $this->templates('master/pegawai/datadiri/anak/index', $data);          
+   
+                }
+              
+            }
+   
 
-         if($validation->run()){
-             if($anak->cekData($id)){
-                 $anak->save();
-                 $this->session->set_flashdata('sukses', 'ditambah');
-                 redirect('pegawai', 'refresh');
-             } else {
-             $this->session->set_flashdata('gagal', 'ditambah, id tidak ditemukan');
-             redirect('pegawai', 'refresh');
-             }
-             
          } else {
-             $data['id'] = $id;
-             $data['nik'] = $this->anak_model->getDataPegawai($id)->nik;
-             $this->templates('master/pegawai/datadiri/anak/index', $data);
+             redirect('pegawai', 'refresh');
          }
 
-        }
 
+    }
+
+    public function edit($id)
+    {
+        if(empty($id)) show_404();
+
+        $anak = $this->anak_model;
+
+        if($anak->cekIdAnak($id)){
+            $data['anak'] = $anak->getDetailAnakById($id);
+            $this->templates('master/pegawai/datadiri/anak/data_anak/update', $data);
+        } else {
+            redirect('pegawai', 'refresh');
+        }
+       
     }
 
     public function update($id)
@@ -54,14 +79,10 @@ class Anak extends Admin_Controller
         $validation->set_rules($anak->rules());
     
         if($validation->run()){
-            if($anak->update()){
-                $this->session->set_flashdata('sukses', 'diupdate');
+            $anak->update();
+            $this->session->set_flashdata('sukses', 'diupdate');
             redirect('pegawai', 'refresh');
-            } else {
-                $this->session->set_flashdata('gagal', 'diupdate');
-                redirect('pegawai', 'refresh');    
-            }
-            
+        
         }
     }
     
