@@ -16,8 +16,8 @@ if(isset($gagal)):
 <div class="card">
 
 	<div class="card-header">
-		<strong class="card-title">#Data - Pegawai<a href="<?= site_url('pegawai/addpegawai'); ?>" class="btn btn-outline-success btn-sm float-right">Tambah
-				Data Pegawai</a></strong>
+		<strong class="card-title">#Data - Pegawai<a href="<?= site_url('anak/create/'. $this->uri->segment('3')) ?>" class="btn btn-outline-success btn-sm float-right">Tambah
+				Data Anak</a></strong>
 	</div>
 	<div class="card-body">
 
@@ -43,7 +43,7 @@ if(isset($gagal)):
 					<td>
 					<a href="<?= site_url('pegawai/data-anak/detail/') . $d->id_anak; ?>" class="btn btn-success btn-sm">Detail</a>
 					<a href="<?= site_url('pegawai/data-anak/edit/' . $d->id_anak); ?>" class="btn btn-primary btn-sm">Edit</a>
-					<a href="<?= site_url('pegawai/hapus/' . $d->id_anak); ?>" class="hapus btn btn-danger btn-sm">Hapus</a>
+					<a href="<?= site_url('pegawai/data-anak/hapus/' . $d->id_anak); ?>" class="hapus btn btn-danger btn-sm">Hapus</a>
 					</td>
 				</tr>
 

@@ -55,6 +55,40 @@ class Anak extends Admin_Controller
 
     }
 
+    public function create($id)
+    {
+        if(empty($id)) show_404();
+
+        $anak = $this->anak_model;
+        $validation = $this->form_validation;
+        $validation->set_rules($anak->rules());
+        $nik = $this->anak_model->getDataPegawai($id)->nik;
+
+        if($this->anak_model->getDataPegawai($id)) {
+
+            if($validation->run()){
+                if($anak->cekData($id)){
+                    $anak->save();
+                    $this->session->set_flashdata('sukses', 'ditambah');
+                    redirect('pegawai', 'refresh');
+                } else {
+                $this->session->set_flashdata('gagal', 'ditambah, id tidak ditemukan');
+                redirect('pegawai', 'refresh');
+                }
+                
+            } else {
+   
+                   $data['id'] = $id;
+                   $data['nik'] = $nik;
+                   $this->templates('master/pegawai/datadiri/anak/data_anak/tambah', $data);          
+   
+                }
+
+        } else {
+            redirect('pegawai', 'refresh');
+        }
+    }
+
     public function edit($id)
     {
         if(empty($id)) show_404();
@@ -95,6 +129,27 @@ class Anak extends Admin_Controller
         $data['anak'] = $anak->getDetailAnakById($id);
 
         $this->templates('master/pegawai/datadiri/anak/data_anak/detail', $data);
+    }
+
+    public function delete($id)
+    {
+        if(empty($id)) show_404();
+
+        $anak = $this->anak_model;
+        
+        if($this->anak_model->getAnakById($id)) {
+        if($anak->delete($id)){
+            $this->session->set_flashdata('sukses', 'dihapus');
+            redirect('pegawai', 'refresh');
+        } else {
+            $this->session->set_flashdata('gagal', 'dihapus');
+            redirect('pegawai', 'refresh');
+        }
+       
+        } else {
+            redirect('pegawai', 'refresh');
+        }
+        
     }
 
 }

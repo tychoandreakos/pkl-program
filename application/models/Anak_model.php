@@ -121,4 +121,25 @@ class Anak_model extends CI_Model {
     return $this->db->get_where($this->table, ['id_anak' => $id])->row();
     }
 
+    public function getAnakById($id)
+    {
+        $result = $this->db->get_where($this->table, ['id_anak' => $id])->num_rows();
+        if($result == 1){
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
+    public function delete($id)
+    {
+        $this->db->delete($this->table, ['id_anak' => $id]);
+        if($this->db->affected_rows() > 0){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }

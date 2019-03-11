@@ -1,6 +1,6 @@
 <div class="card">
 	<div class="card-header">
-		<strong class="card-title">#Data Anak Karyawan <a href="<?= site_url('pegawai/data-pegawai/' . $id); ?>" class="btn btn-outline-primary  btn-sm float-right">Kembali</a></strong>
+		<strong class="card-title">#Data Anak Karyawan <a href="<?= site_url('pegawai/data-pegawai/' . $id); ?>" class="btn btn-outline-primary  btn-sm float-right">Kembali</a> <a href="<?= site_url('pegawai/data-pegawai/' . $id); ?>" class="btn btn-outline-success btn-sm float-right mr-2">Detail Data Anak</a></strong>
 	</div>
 	<div class="card-body">
 
