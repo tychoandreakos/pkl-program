@@ -20,17 +20,17 @@ class Anak_model extends CI_Model {
             'label' => 'nama anak',
             'rules' => 'required'],
 
-            // ['field' => 'tgl_lahiranak',
-            // 'label' => 'tanggal lahir anak',
-            // 'rules' => 'required'],
+            ['field' => 'tgl_lahiranak',
+            'label' => 'tanggal lahir anak',
+            'rules' => 'required'],
 
-            // ['field' => 'tmp_lahiranak',
-            // 'label' => 'tempat lahir',
-            // 'rules' => 'required'],
+            ['field' => 'tmp_lahiranak',
+            'label' => 'tempat lahir',
+            'rules' => 'required'],
 
-            // ['field' => 'pendidikananak',
-            // 'label' => 'pendidikan anak',
-            // 'rules' => 'required'],
+            ['field' => 'pendidikananak',
+            'label' => 'pendidikan anak',
+            'rules' => 'required'],
 
         ];
     }

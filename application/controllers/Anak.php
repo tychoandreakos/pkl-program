@@ -97,7 +97,7 @@ class Anak extends Admin_Controller
 
         if($anak->cekIdAnak($id)){
             $data['anak'] = $anak->getDetailAnakById($id);
-            $this->templates('master/pegawai/datadiri/anak/data_anak/update', $data);
+            $this->templates('master/pegawai/datadiri/pekerjaan/data_pekerjaan/update', $data);
         } else {
             redirect('pegawai', 'refresh');
         }

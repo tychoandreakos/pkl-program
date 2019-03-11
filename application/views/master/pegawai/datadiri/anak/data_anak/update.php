@@ -1,8 +1,3 @@
-<?php
-
-	
-?>
-
 <div class="card">
 	<div class="card-header">
 		<strong class="card-title">#Data Anak Karyawan <a href="<?= site_url('pegawai/data-pegawai/' . $id); ?>" class="btn btn-outline-primary  btn-sm float-right">Kembali</a></strong>
