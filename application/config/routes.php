@@ -54,6 +54,7 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 $route['login'] = 'auth/login';
 $route['pegawai/data-pegawai/(:any)'] = 'pegawai/lengkapidata/$1';
+$route['pegawai/detail/cetak/(:any)'] = 'pegawai/cetak/$1';
 $route['pegawai/data-ortu/(:any)'] = 'orangtua/store/$1';
 $route['pegawai/data-ortu/update/(:any)'] = 'orangtua/update/$1';
 $route['pegawai/data-pasutri/(:any)'] = 'pasutri/store/$1';

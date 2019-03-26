@@ -2,7 +2,7 @@
 	<div class="card-header">
 		<strong class="card-title">#Detail - Pegawai 
         <a href="<?= site_url('pegawai'); ?>" class="btn btn-outline-primary ml-1  btn-sm float-right">Kembali</a>
-        <a href="<?= site_url('pegawai'); ?>" class="btn btn-primary  btn-sm float-right"><i class="ti-printer"></i></a>
+        <a href="cetak/<?= $pegawai->id ?>" class="btn btn-primary  btn-sm float-right"><i class="ti-printer"></i></a>
         </strong>
 	</div>
 	<div class="card-body">
@@ -279,12 +279,12 @@
     
         <tr>
         <td>Jenis Kelamin</td>
-        <td><?= ucwords($a->jk) ?></td>
+        <td><?= $this->pegawai->jenisKelamin($a->jk) ?></td>
         </tr>
 
         <tr>
         <td>Status</td>
-        <td><?= ucwords($a->status) ?></td>
+        <td><?= $this->pegawai->status_anak($a->status) ?></td>
         </tr>
 
       <td colspan="2">

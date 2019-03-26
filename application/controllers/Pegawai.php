@@ -89,6 +89,21 @@ class Pegawai extends Admin_Controller {
          $this->templates('master/pegawai/detail', $data);
     }
 
+    public function cetak($id)
+    {
+        $pegawai = $this->pegawai_model;
+        $nik = $this->pegawai_model->getDataPegawai($id)->nik;
+        $data['pegawai'] = $pegawai->getById($id);
+        $data['anak'] = $pegawai->anakByNik($nik);
+        $data['rp'] = $pegawai->rpByNik($nik);
+        
+            $this->load->library('pdf');
+        
+            $this->pdf->setPaper('A4', 'potrait');
+            $this->pdf->filename = $pegawai->getById($id)->nik ."_". $pegawai->getById($id)->nama .".pdf";
+            $this->pdf->load_view('master/pegawai/cetak', $data);
+    }
+
 
     public function lengkapidata($id)
     {
@@ -188,6 +203,23 @@ class Pegawai extends Admin_Controller {
         } else if($data == 1)
         {
             return 'Suami';
+        }
+    }
+
+    public function status_anak($status)
+    {
+        if($status == 0) {
+            return 'Anak Ke 1';
+        } else if($status == 2){
+            return 'Anak Ke 2';
+        } else if($status == 3){
+            return 'Anak Ke 3';
+        } else if($status == 4){
+            return 'Anak Ke 4';
+        } else if($status == 5){
+            return 'Anak Ke 5';
+        } else {
+            return 'Data Error!';
         }
     }
 }
